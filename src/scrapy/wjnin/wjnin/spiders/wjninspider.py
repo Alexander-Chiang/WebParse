@@ -43,4 +43,5 @@ class Wjnin(Spider):
         if nextLink:
             nextLink = nextLink[0]
             print('NEXTLINK: ' + nextLink)
+            # 递归
             yield Request(nextLink, callback=self.parse)
