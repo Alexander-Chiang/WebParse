@@ -14,12 +14,15 @@ BOT_NAME = 'wjnin'
 SPIDER_MODULES = ['wjnin.spiders']
 NEWSPIDER_MODULE = 'wjnin.spiders'
 
+# 禁止cookies,防止被ban
+COOKIES_ENABLED = False
+
 USER_AGENT = 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.89 Safari/537.36'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'wjnin (+http://www.yourdomain.com)'
 
-# Output
+# Output .csv in D:/
 FEED_URI = u'file:///D:/wjnin.csv'
 FEED_FORMAT = 'CSV'
 

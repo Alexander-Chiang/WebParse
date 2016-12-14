@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import sys
 from scrapy.http import Request
 from scrapy.spider import Spider
 from scrapy.selector import Selector
@@ -30,10 +31,11 @@ class Wjnin(Spider):
             url = eachPost.xpath('th/a[3]/@href').extract()
             # 公告等非帖子内容同样存储在tr标签内，但无法读取title信息，因此输出前先剔除
             if title:
-                item['title'] = title
-                item['type'] = type
+                # sys.getfilesystemencoding()获得本地编码（mbcs编码）
+                item['title'] = [ti.encode(sys.getfilesystemencoding()) for ti in title]
+                item['type'] = [ty.encode(sys.getfilesystemencoding()) for ty in type]
                 item['time'] = time
-                item['author'] = author
+                item['author'] = [au.encode(sys.getfilesystemencoding()) for au in author]
                 item['reply'] = reply
                 item['read'] = read
                 item['url'] = url
